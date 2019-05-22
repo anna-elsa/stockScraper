@@ -1,13 +1,11 @@
 # coding= utf-8
 
-from flask import Flask, request, render_template
-from bs4 import BeautifulSoup
-import requests
+from flask import Flask, request, render_template # used for web application features
+from bs4 import BeautifulSoup # used for html parsing
+import requests # used for url requests
 import re
-# xlrd reads excel files
-import xlrd
-# locale used for number formatting
-import locale
+import xlrd # reads excel files
+import locale # used for number formatting
 locale.setlocale(locale.LC_ALL, 'en_US')
 
 app = Flask(__name__)
@@ -26,10 +24,9 @@ def home():
 		else:
 			return render_template('home.html')
 	except Exception as e:
-		return render_template('home.html', error = 'There was an Error')
+		return render_template('home.html', error = 'There was an error. This stock information may not be currently available.')
 
 def scrape(ticker):
-	
 	try:
 		url = 'https://www.sec.gov/cgi-bin/browse-edgar?CIK='+ticker+'&Find=Search&owner=exclude&action=getcompany'
 		request = requests.get(url)
