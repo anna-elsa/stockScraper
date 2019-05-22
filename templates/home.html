@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Anna's Stock Tracker</title>
+  </head>
+  <body>
+    <div class = "container">
+      <h1>Anna's Stock Tracker</h1>
+      <hr>
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endif %}
+      
+    <form action = "" method = post> 
+      <label for="ticker">Search Company Ticker:</label>
+      <input class="form-control" type="text" placeholder="Ex. AAPL" name = "ticker">
+      <br>
+    <button type="submit" class="btn btn-outline-success">Search</button>
+    </form>
+    <br>
+  <hr>
+{%if ticker %}
+<h1>Summary for {{ticker}}:</h1>
+Numbers are {{units}}.
+<br>
+<br>
+
+<div class="row">
+  <div class="col">
+<div class="card text-center text-white bg-success mb-3" style="max-width: 18rem;">
+  <div class="card-header">Total Assets</div>
+  <div class="card-body">
+    <h5 class="card-title">{{totalAssets}}</h5>
+  </div>
+</div>
+</div>
+
+ <div class="col">
+<div class="card text-center text-white bg-danger mb-3" style="max-width: 18rem;">
+  <div class="card-header">Total Liabilities</div>
+  <div class="card-body">
+    <h5 class="card-title">{{totalLiab}}</h5>
+  </div>
+</div>
+</div>
+
+ <div class="col">
+<div class="card text-center text-white bg-info mb-3" style="max-width: 18rem;">
+  <div class="card-header">Total Stockholders' Equity</div>
+  <div class="card-body">
+    <h5 class="card-title">{{totalEquity}}</h5>
+  </div>
+</div>
+</div>
+</div>
+
+{% endif %}
+  </div>
+
+
+  </body>
+</html>
